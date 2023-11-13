@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <!-- 공통 헤더-->
+    <th:block th:replace="fragments/head :: headFragment"></th:block>
+
+    <body id="page-top">
+        <div id="wrapper">
+            <!-- 사이드바-->
+            <th:block th:replace="fragments/sidebar :: sidebarFragment"></th:block>
+
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <!-- 상단바-->
+                    <th:block th:replace="fragments/topbar :: topbarFragment('분기별 부서 업무원가 보고서 ')"></th:block>
+                    <!-- 본문-->
+                     <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                        	
+                            <input type="text" class="form-control bg-light border-0 small" placeholder= " 연도 "
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            
+                            <input type="text" class="form-control bg-light border-0 small" placeholder=" 분기 "
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder=" 부서코드 "
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <table>
+                    <thead>
+                    <td>부서코드 </td>
+                    <td>부서명 </td>
+                    <td>계정코드  </td>
+                    <td>계정명  </td>
+                    <td> 예산코드 </td>
+                    <td> 예산명  </td>
+                    <td>예산배정금액 </td>
+                    <td> 예산집행액 </td>
+                    <td> 소비차이 </td>
+                    <td> 배부전집행률 </td>
+                    <td> 배부후원가  </td>
+                    <td> 배부차이 </td>
+                    <td> 배부후 집행률 </td>
+                    </thead>
+                   <tbody>
+                   	<tr th:each = "lists:${list}">
+                   		<td th:text="|${lists.deptCd}|"></td>
+                   		<td th:text="|${lists.deptNm}|"></td>
+                   		<td th:text="|${lists.acntCd}|"></td>
+                   		<td th:text="|${lists.acntNm}|"></td>
+                   		<td th:text="${lists.bdgtCd}"></td>
+                   		<td th:text="${lists.bdgtNm}"></td>
+                   		<td th:text="${lists.bdgtAllocAmt}"></td>
+                   		<td th:text="${lists.consAmt}"></td>
+                   		<td th:text="${lists.bdgtConsDif}"></td>
+                   		<td th:text="${lists.expRateBfDis}"></td>
+                   		<td th:text="${lists.consAmtAfDis}"></td>
+                   		<td th:text="${lists.consDisBif}"></td>
+                   		<td th:text="${lists.expRateAfDis}"></td>
+                   </tbody>
+                    </table>
+                    <th:block layout:fragment="content"></th:block>
+                </div>
+               
+                <!-- 공통 하단-->
+                <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+            </div>
+        </div>
+
+        <!-- 공통 스크립트-->
+        <th:block th:replace="fragments/script :: scriptFragment"></th:block>
+    </body>
+</html>

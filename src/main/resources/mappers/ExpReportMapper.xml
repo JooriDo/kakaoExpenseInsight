@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.expense.repository.ExpReportMapper">
+    <select id="selectAll" resultMap="com.expense.dto.ExpReportDTO">
+        SELECT   a.DEPT_CD 
+				,b.DEPT_NM 
+				,a.ACNT_CD 
+				,c.ACNT_NM 
+				,a.bdgt_cd
+				,d."bdgt_nm" 
+				,a.BDGT_ALLOC_AMT 
+				,a.CONS_AMT
+				,a.BDGT_CONS_DIF 
+				,a.EXP_RATE_BF_DIS 
+				,a.CONS_AMT_AF_DIS 
+				,a.CONS_DIS_BIF 
+				,a.EXP_RATE_AF_DIS 
+			FROM EXP_REPORT_DTL a 
+			LEFT OUTER JOIN DEPT_MNG b ON a.DEPT_CD =b.DEPT_CD 
+			LEFT OUTER JOIN ACNT_MNG c ON a.ACNT_CD =c."acnt_cd" 
+			LEFT OUTER JOIN BDGT_MNG d ON a.BDGT_CD =d."bdgt_cd" 
+			WHERE 1=1
+			--  AND a.EXPREPORT_ID ='2023-1'
+			--  AND a.DEPT_CD = 
+    </select>
+</mapper>
