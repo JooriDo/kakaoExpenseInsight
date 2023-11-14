@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.expense.dto.ExpReportDTO;
+import com.expense.dto.ExpStatusDTO;
+import com.expense.dto.ExpValidationDTO;
 import com.expense.service.ExpReportService;
 
 import org.springframework.ui.Model;
@@ -27,6 +29,18 @@ public class TestController {
 		List<ExpReportDTO> expReportList=expService.getAllExpReportDto();
 		model.addAttribute("list",expReportList);
         return "default";//"default"; 
+    } 
+	@RequestMapping("validateExp") 
+    public String expValidateLists(Model model) { 
+		List<ExpValidationDTO> expValidationList=expService.getAllExpValidationDto();
+		model.addAttribute("list",expValidationList);
+        return "validateExp";
+    } 
+	@RequestMapping("statusExp") 
+    public String expstatusLists(Model model) { 
+		List<ExpStatusDTO> expValidationList=expService.getExpenseStatusDto();
+		model.addAttribute("list",expValidationList);
+        return "statusExp";
     } 
 }
 /*

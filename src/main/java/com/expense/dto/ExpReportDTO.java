@@ -17,6 +17,8 @@ public class ExpReportDTO {
 	private String consAmtAfDis;
 	private String consDisBif;
 	private String expRateAfDis;
+		
+
 
 	public ExpReportDTO(String deptCd, String deptNm, String acntCd, String acntNm, String bdgtCd, String bdgtNm,
 			String bdgtAllocAmt, String consAmt, String bdgtConsDif, String expRateBfDis, String consAmtAfDis,
